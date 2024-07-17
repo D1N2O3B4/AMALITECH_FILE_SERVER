@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'file_app.middleware.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -148,3 +149,8 @@ DEFAULT_FROM_EMAIL = 'ralphonline60@gmail.com'
 SERVER_EMAIL = 'ralphonline60@gmail.com'
 
 PASSWORD_RESET_TIMEOUT = 14400
+
+AUTHENTICATION_BACKENDS = [
+    'config.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
