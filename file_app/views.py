@@ -10,6 +10,7 @@ from django.core.mail import EmailMessage
 from django.views.generic.edit import FormView
 from .filters import FileFilter
 from django.shortcuts import redirect
+from .forms import EmailForm
 import mimetypes
 
 # Create your views here.
@@ -35,4 +36,34 @@ def file_list(request):
 #File Detail view
 class FileDetailView(DetailView):
     model = File
+
+#File Email view
+class FileEmailView(FormView):
+    template_name = 'trip/file_email.html'
+    form_class = EmailForm
+    success_url = reverse_lazy('file-list')
+
+    def form_valid(self, form):
+        file_id = self.kwargs['pk']
+        file = File.objects.get(pk=file_id)
+        recipient = form.cleaned_data['recipient_email']
+        message = form.cleaned_data['message']
+        subject = file.title
+        sender = settings.SERVER_EMAIL
+
+        mime_type, _ = mimetypes.guess_type(file.file.path)
+
+        email = EmailMessage(
+            subject,
+            message,
+            sender,
+            [recipient],
+        )
+        email.attach(file.file.name, file.file.read(), mime_type)
+        email.send()
+
+        file.email_count += 1
+        file.save()
+
+        return super().form_valid(form)
 
