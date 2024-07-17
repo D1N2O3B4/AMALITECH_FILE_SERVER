@@ -32,5 +32,7 @@ def file_list(request):
     }
     return render(request,'file_app/file_list.html',context)
 
+#File Detail view
 class FileDetailView(DetailView):
     model = File
+
