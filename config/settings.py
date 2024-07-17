@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #myapps
     'file_app',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
