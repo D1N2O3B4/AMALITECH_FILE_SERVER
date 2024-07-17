@@ -1,0 +1,28 @@
+{% extends "registration/_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if form.error %}
+    <p>Credentials not valid.</p>
+    <h4>Try Again</h4>
+{% endif %}
+<h1 class="text-center text-2xl mb-8">Login</h1>
+<div class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+  <div class="relative py-3 sm:w-96 mx-auto text-center">
+    <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+      <div class="h-2 bg-indigo-400 rounded-t-md"></div>
+      <div class="px-8 py-6">
+        <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="flex justify-between items-baseline">
+            <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Login</button>
+            <a href="{% url 'signup' %}" class="text-sm hover:underline">Signup</a>
+            <a href="{% url 'password_reset' %}" class="text-sm hover:underline">Forgot Password</a>
+            <input type="hidden" name="next" value={{next}}>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
