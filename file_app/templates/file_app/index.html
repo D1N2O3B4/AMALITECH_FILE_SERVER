@@ -1,0 +1,41 @@
+<!Doctype>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<nav>
+    <div class="">
+      <div class="flex justify-between h-16 px-10 shadow items-center">
+        <div class="flex items-center space-x-8">
+          <h1 class="text-xl lg:text-2xl font-bold cursor-pointer">Lizzy's File Server</h1>
+          <div class="hidden md:flex justify-around space-x-4">
+          </div>
+        </div>
+        <div class="flex space-x-4 items-center">
+          {% comment %} <a href="{% url 'login' %}" class="text-gray-800 text-sm">LOGIN</a> {% endcomment %}
+          {% comment %} <p  class="text-gray-800 text-sm">{{user.username}}</p> {% endcomment %}
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Login</button>
+        </form>
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Signup</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+<div>
+
+<div class="text-center">
+    <div class="shadow p-5">
+        <h2>Welcome to the Lizzy File Server Platform!</h2>
+        <hr style="color: #ccc;">
+        <p class="col-md-9 mt-3 ml-3 text-center mx-auto" style="font-size: 16px;">This is the home page of our platform. Feel free to explore and use the various features.</p>
+
+    </div>
+</div>
