@@ -67,3 +67,13 @@ class FileEmailView(FormView):
 
         return super().form_valid(form)
 
+class FileDownloadView(View):
+    def get(self, request, pk):
+        file = get_object_or_404(File, pk=pk)
+        file.download_count += 1
+        file.save()
+
+        response = FileResponse(file.file, content_type='application/octet-stream')
+        response['Content-Disposition'] = f'attachment; filename="{file.file.name}"'
+
+        return response
