@@ -39,7 +39,7 @@ class FileDetailView(DetailView):
 
 #File Email view
 class FileEmailView(FormView):
-    template_name = 'trip/file_email.html'
+    template_name = 'file_app/file_email.html'
     form_class = EmailForm
     success_url = reverse_lazy('file-list')
 
@@ -67,6 +67,7 @@ class FileEmailView(FormView):
 
         return super().form_valid(form)
 
+#File Download view
 class FileDownloadView(View):
     def get(self, request, pk):
         file = get_object_or_404(File, pk=pk)
