@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     #myapps
     'file_app',
     'django_filters',
+    'crispy_forms',
+    'crispy_tailwind',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
+CRISPY_TEMPLATE_PACK = 'tailwind'
 
 #Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
