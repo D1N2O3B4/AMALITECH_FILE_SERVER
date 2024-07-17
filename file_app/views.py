@@ -16,8 +16,17 @@ import mimetypes
 # Create your views here.
 
 class HomeView(TemplateView):
-    template_name = 'trip/index.html'
+    template_name = 'file_app/index.html'
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('file-list')
         return super().dispatch(request, *args, **kwargs)
+    
+def file_list(request):
+    files = File.objects.all()
+
+    context = {
+        'files':files,
+    }
+
+    return render(request,'file_app/file_list.html',context)

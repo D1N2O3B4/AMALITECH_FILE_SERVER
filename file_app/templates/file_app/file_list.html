@@ -1,0 +1,62 @@
+{% extends "trip/_base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-2xl mb-8">Files</h1>
+<hr>
+<div class="pt-2 relative mx-auto text-gray-600 flex justify-center items-center">
+    <div class="flex items-center">
+        <form method="get">
+            {{ myFilter.form.title.label_tag }} {{ myFilter.form.title }}
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="bg-gray-50 p-8 rounded shadow my-4">
+    <hr class="my-4">
+    <div class="flex gap-2 flex-wrap justify-center">
+        {% comment %} {% for file in files %} {% endcomment %}
+        {% for file in myFilter.qs %}
+            <a href="{% url 'file-detail' file.pk %}">
+                <div class="border-2 rounded-lg pb-4 hover:shadow">
+                    <img class="w-48 h-32 object-cover overflow-hidden rounded-t-md" src="{{file.img.url}}" alt="{{file.title}}">
+                    <p class="text-center mt-4 text-lg">Title: {{file.title}}</p>
+                    <p class="text-center mt-4 text-lg">Downloads: {{file.download_count}}</p>
+                    <p class="text-center mt-4 text-lg">Email Counts: {{file.email_count}}</p>
+                    <div class="text-center mt-4 text-lg">
+                        <div class="flex justify-center space-x-4">
+                            <form id='download-form-{{ file.pk }}' method="get" action="{% url 'file-download' file.pk %}">
+                                <button type="submit" class="item-center middle none center flex justify-center rounded-lg bg-green-500 p-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-ripple-light="true" style="position: relative; overflow: hidden;">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                            </form>
+                            <a href="{% url 'file-detail' file.pk %}">
+                                <button class="item-center middle none center flex justify-center rounded-lg bg-blue-500 p-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-ripple-light="true" style="position: relative; overflow: hidden;">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'file-email' file.pk %}">
+                                <button class="item-center middle none center flex justify-center rounded-lg bg-red-500 p-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-ripple-light="true" style="position: relative; overflow: hidden;">
+                                    <i class="fa fa-envelope"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <script>
+                // Submit the form and reload the page after a short delay
+                document.getElementById('download-form-{{ file.pk }}').addEventListener('submit', function(event) {
+                    event.preventDefault();  // Prevent default form submission
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 700); // Adjust the delay as needed
+                    this.submit();  // Submit the form after the delay
+                });
+            </script>
+        {% endfor %}
+    </div>    
+</div>
+
+{% endblock content %}
