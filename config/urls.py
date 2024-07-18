@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import signup, CustomLoginView
+from .views import signup, CustomLoginView, confirm_email
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -28,12 +28,17 @@ urlpatterns = [
     path('',include('file_app.urls')),
 
 
+
     #LOGIN PATHS
     path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/login',CustomLoginView.as_view(),name='login'),
 
     #SIGNUP PATH
     path('accounts/signup/',signup, name='signup'),
+
+    #EMAIL CONFIRMATION
+    path('confirm/<int:user_id>/<str:token>/', confirm_email, name='confirm_email'),
+
 
     #PASSWORD RESET PATHS
     path('accounts/password_reset/',auth_views.PasswordResetView.as_view(template_name="registration/password_reset_form.html"),name='password_reset'),
