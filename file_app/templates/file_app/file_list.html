@@ -23,7 +23,6 @@
         {% for file in myFilter.qs %}
             <a href="{% url 'file-detail' file.pk %}">
                 <div class="border-2 rounded-lg pb-4 hover:shadow">
-                    {% comment %} <img class="w-48 h-32 object-cover overflow-hidden rounded-t-md" src="{{file.img.url}}" alt="{{file.title}}"> {% endcomment %}
                     <div class="w-48 h-32 border-2 border-gray-300 bg-white px-5 py-3 rounded-md overflow-auto flex items-center justify-center">
                         <p class="text-sm">{{ file.title }}</p>
                     </div>                                   

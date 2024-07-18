@@ -14,8 +14,6 @@
           </div>
         </div>
         <div class="flex space-x-4 items-center">
-          {% comment %} <a href="{% url 'login' %}" class="text-gray-800 text-sm">LOGIN</a> {% endcomment %}
-          {% comment %} <p  class="text-gray-800 text-sm">{{user.username}}</p> {% endcomment %}
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Login</button>
