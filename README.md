@@ -8,7 +8,7 @@
 * [Deployed link](http://d1n2o3b4.pythonanywhere.com/)
 
 # ER diagram of database design
-![ER diagram of database](https://github.com/D1N2O3B4/AMALITECH_FILE_SERVER/media/files/ER.png)
+![ER diagram of database](https://github.com/D1N2O3B4/AMALITECH_FILE_SERVER/blob/main/media/files/ER.png)
 
 
 # Email Authentication
