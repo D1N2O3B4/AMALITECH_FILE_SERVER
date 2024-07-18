@@ -1,11 +1,18 @@
 {% extends "file_app/_base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-<h1 class="text-center text-2xl mb-8">Send Mail</h1>
-<hr>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Send Email</button>
-</form>
-
+  <div class="relative py-3 sm:w-96 mx-auto text-center">
+    <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+      <div class="h-2 bg-indigo-400 rounded-t-md"></div>
+      <div class="px-8 py-6">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="flex justify-between items-baseline">
+            <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Send Mail</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock content %}

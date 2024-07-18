@@ -16,7 +16,6 @@
 <div class="bg-gray-50 p-8 rounded shadow my-4">
     <hr class="my-4">
     <div class="flex gap-2 flex-wrap justify-center">
-        {% comment %} {% for file in files %} {% endcomment %}
         {% for file in myFilter.qs %}
             <a href="{% url 'file-detail' file.pk %}">
                 <div class="border-2 rounded-lg pb-4 hover:shadow">
