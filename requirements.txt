@@ -1,5 +1,5 @@
 Django>=3.2,<5.0
 django-crispy-forms
-django-crispy-tailwind
+crispy-tailwind
 django-filter
-jazzmin
+django-jazzmin
