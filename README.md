@@ -8,7 +8,7 @@
 * [Deployed link](http://d1n2o3b4.pythonanywhere.com/)
 
 # ER diagram of database design
-![ER diagram of database](https://lucid.app/lucidchart/0c5161f0-38d9-4fb6-a76f-a649a28096ca/edit?viewport_loc=-196%2C-518%2C1954%2C1002%2C0_0&invitationId=inv_a73506e2-bf68-4649-aa83-49d7ad08296b)
+![ER diagram of database](https://github.com/D1N2O3B4/AMALITECH_FILE_SERVER/media/files/ER.png)
 
 
 # Email Authentication
