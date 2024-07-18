@@ -10,12 +10,16 @@
       <div class="h-2 bg-indigo-400 rounded-t-md"></div>
       <div class="px-8 py-6">
         {% if messages %}
-          <div class="mb-4">
-            {% for message in messages %}
+        <div class="mb-4">
+          {% for message in messages %}
+            {% if 'Invalid email provider' in message.tags %}
+              <div class="text-red-600">{{ message }}</div>
+            {% else %}
               <div class="text-green-600">{{ message }}</div>
-            {% endfor %}
-          </div>
-        {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}      
         <form method="POST">
           {% csrf_token %}
           {{ form|crispy }}
