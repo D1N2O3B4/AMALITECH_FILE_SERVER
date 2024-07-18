@@ -54,9 +54,6 @@
     MIDDLEWARE: Lists the middleware used in the project, including custom middleware for authentication.
     TEMPLATES: Configures the template settings, including directories and context processors.
     DATABASES: Configures the database settings.
-    AUTH_PASSWORD_VALIDATORS: Lists the password validators.
-    LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ: Configures internationalization settings.
-    STATIC_URL: Configures the URL for serving static files.
     MEDIA_URL, MEDIA_ROOT: Configures the URL and root directory for serving media files.
     LOGIN_REDIRECT_URL: Configures the URL to redirect to after a successful login.
     CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK: Configures the Crispy Forms settings.
