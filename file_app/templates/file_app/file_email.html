@@ -9,7 +9,7 @@
         <form method="POST">
           {% csrf_token %}
           {{ form|crispy }}
-          <div class="flex justify-between items-baseline">
+          <div class="flex justify-center">
             <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Send Mail</button>
           </div>
         </form>
