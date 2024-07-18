@@ -2,6 +2,7 @@ import django_filters
 from .models import File
 from django.db import models
 
+
 class FileFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(method='filter_by_title')
 

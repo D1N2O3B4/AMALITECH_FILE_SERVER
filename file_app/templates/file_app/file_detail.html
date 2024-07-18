@@ -9,4 +9,11 @@
     <p class="text-2xl">File Type: {{file.file_format|title}}</p>
     <img src="{{note.img.url}}" alt="{{file.name}}">
 </div>
+<div class="flex justify-center">
+    <a href="{% url 'file-list' %}">
+    <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm" >
+        Back
+    </button>
+    </a>
+</div>
 {% endblock content %}

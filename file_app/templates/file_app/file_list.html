@@ -1,5 +1,5 @@
 {% extends "file_app/_base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <h1 class="text-center text-2xl mb-8">Files</h1>
@@ -7,8 +7,12 @@
 <div class="pt-2 relative mx-auto text-gray-600 flex justify-center items-center">
     <div class="flex items-center">
         <form method="get">
-            {{ myFilter.form.title.label_tag }} {{ myFilter.form.title }}
-            <button type="submit">Search</button>
+            {{ myFilter.form.title|as_crispy_field}}
+            <div class="flex justify-center">
+                <button type="submit" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm" >
+                    Search
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -19,8 +23,10 @@
         {% for file in myFilter.qs %}
             <a href="{% url 'file-detail' file.pk %}">
                 <div class="border-2 rounded-lg pb-4 hover:shadow">
-                    <img class="w-48 h-32 object-cover overflow-hidden rounded-t-md" src="{{file.img.url}}" alt="{{file.title}}">
-                    <p class="text-center mt-4 text-lg">Title: {{file.title}}</p>
+                    {% comment %} <img class="w-48 h-32 object-cover overflow-hidden rounded-t-md" src="{{file.img.url}}" alt="{{file.title}}"> {% endcomment %}
+                    <div class="w-48 h-32 border-2 border-gray-300 bg-white px-5 py-3 rounded-md overflow-auto flex items-center justify-center">
+                        <p class="text-sm">{{ file.title }}</p>
+                    </div>                                   
                     <p class="text-center mt-4 text-lg">Downloads: {{file.download_count}}</p>
                     <p class="text-center mt-4 text-lg">Email Counts: {{file.email_count}}</p>
                     <div class="text-center mt-4 text-lg">
