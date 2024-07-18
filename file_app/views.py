@@ -11,6 +11,7 @@ from django.views.generic.edit import FormView
 from .filters import FileFilter
 from django.shortcuts import redirect
 from .forms import EmailForm
+import logging
 import mimetypes
 
 # Create your views here.
@@ -59,11 +60,13 @@ class FileEmailView(FormView):
             sender,
             [recipient],
         )
-        email.attach(file.file.name, file.file.read(), mime_type)
-        email.send()
 
-        file.email_count += 1
-        file.save()
+        try:
+            email.send()
+            file.email_count += 1
+            file.save()
+        except Exception as e:
+            logging.error('An error occured')
 
         return super().form_valid(form)
 

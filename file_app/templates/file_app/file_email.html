@@ -4,6 +4,7 @@
   <div class="relative py-3 sm:w-96 mx-auto text-center">
     <div class="mt-4 bg-white shadow-md rounded-lg text-left">
       <div class="h-2 bg-indigo-400 rounded-t-md"></div>
+      <div id="message" style="display: none;" class="text-green-600">Email has been successfully sent.</div>
       <div class="px-8 py-6">
         <form method="POST">
           {% csrf_token %}
@@ -15,4 +16,5 @@
       </div>
     </div>
   </div>
+
 {% endblock content %}
