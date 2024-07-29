@@ -62,6 +62,7 @@ class FileEmailView(FormView):
         )
 
         try:
+            email.attach_file(file.file.path, mimetype=mime_type)
             email.send()
             file.email_count += 1
             file.save()
